@@ -21,8 +21,8 @@ void main() {
   });
 
   final cases = <(String, PlateSpec, PlateTheme, String)>[
-    ('blue', MauritaniaPlates.blue, MauritaniaThemes.blue, '1234AB00'),
-    ('red', MauritaniaPlates.red, MauritaniaThemes.red, '1006TT05'),
+    ('blue', MauritaniaPlates.blue, MauritaniaThemes.blue, '1234 AB 00'),
+    ('red', MauritaniaPlates.red, MauritaniaThemes.red, '1006 TT 05'),
   ];
 
   test('every spec has a golden', () {
@@ -31,10 +31,7 @@ void main() {
 
   for (final (name, spec, theme, values) in cases) {
     testWidgets(name, (tester) async {
-      final controller = PlateController.fromValues(
-        spec,
-        values.split('').toList(),
-      );
+      final controller = PlateController.fromValues(spec, values.split(' '));
       await tester.pumpWidget(
         MaterialApp(
           home: Scaffold(

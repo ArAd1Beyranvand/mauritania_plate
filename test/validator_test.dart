@@ -4,14 +4,14 @@ import 'package:plate_core/plate_core.dart';
 
 void main() {
   PlateValidation judge(String v) => const MauritaniaPlateValidator().validate(
-    PlateEntry(spec: MauritaniaPlates.blue, values: v.split('')),
+    PlateEntry(spec: MauritaniaPlates.blue, values: v.split(' ')),
   );
 
   test('a full plate is valid', () {
-    expect(judge('1234AB00').isValid, isTrue);
+    expect(judge('1234 AB 00').isValid, isTrue);
   });
 
   test('region 13 is reported', () {
-    expect(judge('1234AB13').isValid, isFalse);
+    expect(judge('1234 AB 13').isValid, isFalse);
   });
 }

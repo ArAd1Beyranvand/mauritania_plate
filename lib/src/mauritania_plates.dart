@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/widgets.dart';
 import 'package:plate_core/plate_core.dart';
 
@@ -59,23 +61,19 @@ abstract final class _Layout {
   static const double digitPitch = 45.5;
   static const double letterPitch = 52;
 
-  /// Cell centre, pitch and whether it is a digit, left to right:
-  /// `NNNN LL RR`.
-  static const List<(double, double, bool)> cells = <(double, double, bool)>[
-    (33.3, digitPitch, true),
-    (78.8, digitPitch, true),
-    (124.3, digitPitch, true),
-    (169.8, digitPitch, true),
-    (248.9, letterPitch, false),
-    (301.0, letterPitch, false),
-    (378.6, digitPitch, true),
-    (424.4, digitPitch, true),
-  ];
+  /// First cell centre, pitch, cell count and whether it is a digit, left to
+  /// right: `NNNN LL RR`.
+  static const List<(double, double, int, bool)> fields =
+      <(double, double, int, bool)>[
+        (33.3, digitPitch, 4, true),
+        (248.9, letterPitch, 2, false),
+        (378.6, digitPitch, 2, true),
+      ];
 }
 
 abstract final class MauritaniaPlates {
   /// The Euro-style plate in blue. Slots: four digits, two letters, two
-  /// region digits. Pair with `MauritaniaThemes.blue`.
+  /// region digits, one slot each. Pair with `MauritaniaThemes.blue`.
   static final PlateSpec blue = _plate('mr.blue', MauritaniaColors.blue);
 
   /// The same plate in red. Pair with `MauritaniaThemes.red`.
@@ -133,7 +131,8 @@ abstract final class MauritaniaPlates {
       ),
     ],
     slots: <PlateSlot>[
-      for (final (double centre, double pitch, bool digit) in _Layout.cells)
+      for (final (double centre, double pitch, int count, bool digit)
+          in _Layout.fields)
         PlateSlot(
           alphabet: digit
               ? MauritaniaAlphabets.digits
@@ -141,15 +140,17 @@ abstract final class MauritaniaPlates {
           box: PlateBox(
             centre - pitch / 2,
             _Layout.serialTop,
-            pitch,
+            count * pitch,
             _Layout.serialHeight,
           ),
+          length: count,
+          spacing: max(0, pitch - 0.6 * 0.72 * _Layout.serialHeight),
         ),
     ],
     textGroups: const <PlateTextGroup>[
-      PlateTextGroup(<int>[0, 1, 2, 3], key: 'number'),
-      PlateTextGroup(<int>[4, 5], key: 'letters'),
-      PlateTextGroup(<int>[6, 7], key: 'region'),
+      PlateTextGroup(<int>[0], key: 'number'),
+      PlateTextGroup(<int>[1], key: 'letters'),
+      PlateTextGroup(<int>[2], key: 'region'),
     ],
   );
 }
