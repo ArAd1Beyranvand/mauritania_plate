@@ -7,6 +7,7 @@ import 'mauritania_alphabets.dart';
 import 'mauritania_clippers.dart';
 import 'mauritania_colors.dart';
 import 'mauritania_country.dart';
+import 'mauritania_regions.dart';
 
 /// Where the ink sits on a Mauritanian plate, in millimetres.
 ///
@@ -152,5 +153,6 @@ abstract final class MauritaniaPlates {
       PlateTextGroup(<int>[1], key: 'letters'),
       PlateTextGroup(<int>[2], key: 'region'),
     ],
+    resolveRegion: MauritaniaRegions.captionOf,
   );
 }

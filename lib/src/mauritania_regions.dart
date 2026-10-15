@@ -1,3 +1,5 @@
+import 'package:plate_core/plate_core.dart';
+
 /// The two-digit region code that ends a plate, from the article's list.
 abstract final class MauritaniaRegions {
   static const Map<String, String> byCode = <String, String>{
@@ -17,4 +19,9 @@ abstract final class MauritaniaRegions {
   };
 
   static String? nameOf(String code) => byCode[code];
+
+  /// A [PlateLabelResolver] for [PlateSpec.resolveRegion]: null until both
+  /// digits are typed.
+  static String? captionOf(String Function(String key) group) =>
+      nameOf(group('region'));
 }
