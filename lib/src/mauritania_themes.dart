@@ -18,9 +18,7 @@ abstract final class MauritaniaThemes {
     inactiveColor: MauritaniaColors.inactive,
   );
 
-  /// Blue on white: pair with `MauritaniaPlates.blue`.
   static final PlateTheme blue = _livery(MauritaniaColors.blue);
 
-  /// Red on white: pair with `MauritaniaPlates.red`.
   static final PlateTheme red = _livery(MauritaniaColors.red);
 }

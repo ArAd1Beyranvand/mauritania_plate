@@ -18,7 +18,8 @@ import 'mauritania_regions.dart';
 /// * Strip: x 465.4 to the edge, a background column, not a box.
 /// * Ring: white, x 468.5..507.0, y 15.9..54.0 (38.5 across, centre
 ///   487.7, 35.0), ~2.5 mm thick, cut out of the strip by
-///   `MauritaniaRingClipper`, so the white face is the ring. The map inside it is a crest and is not drawn.
+///   `MauritaniaRingClipper`, so the white face is the ring. The map inside it
+///   is a crest and is not drawn.
 /// * Arabic `ج إ م`: white ink x 475.3..501.3, y 59.0..69.4.
 /// * `RIM`: white ink x 475.3..502.3, y 73.3..85.2.
 /// * Serial: ink x 31.7..441.0, y 21.3..86.2 (65 tall, centre 53.8). Glyph
@@ -31,9 +32,7 @@ import 'mauritania_regions.dart';
 /// width-limited: golden ink y 31..74 (43 tall, 66% of the reference),
 /// centred 1.3 mm high. Columns agree within 2 mm (`2` 63..93 against
 /// 61.9..95.7; last `0` 407..441 against 407.7..441.0), except the `1`, which
-/// has a base in DejaVu and none on the plate. Measured in the golden: ring
-/// 16..53, strip from 466, Arabic y 59..70, `RIM` y 75..83 (reference 73..85).
-/// `plate_core` is unchanged.
+/// has a base in DejaVu and none on the plate.
 ///
 /// **Not drawn.** The 2017 Arabic-letter form.
 abstract final class _Layout {
@@ -73,11 +72,11 @@ abstract final class _Layout {
 }
 
 abstract final class MauritaniaPlates {
-  /// The Euro-style plate in blue. Slots: four digits, two letters, two
-  /// region digits, one slot each. Pair with `MauritaniaThemes.blue`.
+  /// Slots: four digits, two letters, two region digits. Pair with
+  /// `MauritaniaThemes.blue`.
   static final PlateSpec blue = _plate('mr.blue', MauritaniaColors.blue);
 
-  /// The same plate in red. Pair with `MauritaniaThemes.red`.
+  /// Pair with `MauritaniaThemes.red`.
   static final PlateSpec red = _plate('mr.red', MauritaniaColors.red);
 
   static final List<PlateSpec> all = <PlateSpec>[blue, red];
