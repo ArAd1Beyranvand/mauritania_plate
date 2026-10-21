@@ -4,9 +4,9 @@ import 'package:flutter/widgets.dart';
 ///
 /// [blue] is the modal colour of the strip, the serial and the frame in the
 /// vector artwork `Plaques_d'immatriculation_de_la_Mauritanie.png`. [red] is
-/// the median of the red pixels of the strip and serial in the photograph
-/// `Mauretan_KfZ-Kennzeichen_rot_…jpg`, which is lit and dim — the true print
-/// is probably brighter. The article does not say what the red series is for.
+/// the median of the red pixels in the photograph
+/// `Mauretan_KfZ-Kennzeichen_rot_…jpg`, which is lit and dim, so the true
+/// print is probably brighter.
 abstract final class MauritaniaColors {
   static const Color blue = Color(0xFF003399);
   static const Color red = Color(0xFF7C2736);

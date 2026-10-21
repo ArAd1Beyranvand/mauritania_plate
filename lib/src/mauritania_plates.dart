@@ -9,13 +9,11 @@ import 'mauritania_colors.dart';
 import 'mauritania_country.dart';
 import 'mauritania_regions.dart';
 
-/// Where the ink sits on a Mauritanian plate, in millimetres.
-///
-/// Measured off `Plaques_d'immatriculation_de_la_Mauritanie.png` (1000×222)
+/// Plate layout in millimetres, measured off `Plaques_d'immatriculation_de_la_Mauritanie.png` (1000×222)
 /// by normalising it to the article's 520×110. The artwork is drawn at 4.5
 /// against the documented 4.73, so x positions carry ~5%.
 ///
-/// * Strip: x 465.4 to the edge, a background column, not a box.
+/// * Strip: x 465.4 to the edge, a background column.
 /// * Ring: white, x 468.5..507.0, y 15.9..54.0 (38.5 across, centre
 ///   487.7, 35.0), ~2.5 mm thick, cut out of the strip by
 ///   `MauritaniaRingClipper`, so the white face is the ring. The map inside it
@@ -34,7 +32,6 @@ import 'mauritania_regions.dart';
 /// 61.9..95.7; last `0` 407..441 against 407.7..441.0), except the `1`, which
 /// has a base in DejaVu and none on the plate.
 ///
-/// **Not drawn.** The 2017 Arabic-letter form.
 abstract final class _Layout {
   static const double width = 520;
   static const double height = 110;
