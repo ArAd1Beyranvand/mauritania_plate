@@ -15,9 +15,6 @@ abstract final class MauritaniaCountry {
     panelColor: Color(0x00000000),
     panelTextColor: MauritaniaColors.white,
     flagAspectRatio: 327 / 361,
-    flag: SvgPlateAsset(
-      'assets/Mauritania_map.svg',
-      package: 'mauritania_plate',
-    ),
+    flag: SvgPlateAsset('assets/Mauritania_map.svg', package: 'mauritania_plate'),
   );
 }

@@ -22,6 +22,5 @@ abstract final class MauritaniaRegions {
 
   /// A [PlateLabelResolver] for [PlateSpec.resolveRegion]: null until both
   /// digits are typed.
-  static String? captionOf(String Function(String key) group) =>
-      nameOf(group('region'));
+  static String? captionOf(String Function(String key) group) => nameOf(group('region'));
 }
