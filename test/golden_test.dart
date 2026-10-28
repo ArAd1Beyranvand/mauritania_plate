@@ -21,8 +21,8 @@ void main() {
   });
 
   final cases = <(String, PlateSpec, PlateTheme, String)>[
-    ('blue', MauritaniaPlates.blue, MauritaniaThemes.blue, '1234 AB 00'),
-    ('red', MauritaniaPlates.red, MauritaniaThemes.red, '1006 TT 05'),
+    ('blue', MauritaniaPlates.standard, MauritaniaThemes.blue, '1234 AB 00'),
+    ('red', MauritaniaPlates.standard, MauritaniaThemes.red, '1006 TT 05'),
   ];
 
   test('every spec has a golden', () {

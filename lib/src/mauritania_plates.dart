@@ -68,20 +68,17 @@ abstract final class _Layout {
 }
 
 abstract final class MauritaniaPlates {
-  /// Slots: four digits, two letters, two region digits. Pair with
-  /// `MauritaniaThemes.blue`.
-  static final PlateSpec blue = _plate('mr.blue', MauritaniaColors.blue);
+  /// Slots: four digits, two letters, two region digits. The strip takes the
+  /// theme's divider colour: pair with `MauritaniaThemes.blue` or `.red`.
+  static final PlateSpec standard = _plate('mr.standard');
 
-  /// Pair with `MauritaniaThemes.red`.
-  static final PlateSpec red = _plate('mr.red', MauritaniaColors.red);
-
-  static final List<PlateSpec> all = <PlateSpec>[blue, red];
+  static final List<PlateSpec> all = <PlateSpec>[standard];
 
   /// The strip, with the ring cut out of it: the white face shows through
   /// as the ring. A filled disc on top would cover the map, which the panel
   /// paints under the bands.
-  static PlateSection _strip(Color strip) {
-    final PlateSection fill = PlateSection.fill(PlateFill.color(strip));
+  static PlateSection _strip() {
+    const PlateSection fill = PlateSection.fill(PlateFill.divider);
     return PlateSection.rows(<PlatePart>[
       PlatePart(fill, end: _Layout.ringTop),
       PlatePart(
@@ -89,7 +86,7 @@ abstract final class MauritaniaPlates {
           PlatePart(fill, end: _Layout.ringLeft),
           PlatePart(
             PlateSection.fill(
-              PlateFill.color(strip),
+              PlateFill.divider,
               shape: const MauritaniaRingClipper(ringWidth: _Layout.ringWidth),
             ),
             end: _Layout.ringLeft + _Layout.ringOuter,
@@ -102,7 +99,7 @@ abstract final class MauritaniaPlates {
     ]);
   }
 
-  static PlateSpec _plate(String id, Color strip) => PlateSpec(
+  static PlateSpec _plate(String id) => PlateSpec(
     id: id,
     country: MauritaniaCountry.mauritania,
     canvasWidth: _Layout.width,
@@ -110,7 +107,7 @@ abstract final class MauritaniaPlates {
     panel: const PlatePanel(box: _Layout.map, padding: EdgeInsets.zero),
     background: PlateSection.columns(<PlatePart>[
       const PlatePart(PlateSection.plain, end: _Layout.stripStart),
-      PlatePart(_strip(strip)),
+      PlatePart(_strip()),
     ]),
     labels: const <PlateLabel>[
       PlateLabel(

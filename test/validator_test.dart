@@ -4,7 +4,7 @@ import 'package:plate_core/plate_core.dart';
 
 void main() {
   PlateValidation judge(String v) => const MauritaniaPlateValidator().validate(
-    PlateEntry(spec: MauritaniaPlates.blue, values: v.split(' ')),
+    PlateEntry(spec: MauritaniaPlates.standard, values: v.split(' ')),
   );
 
   test('a full plate is valid', () {

@@ -10,21 +10,41 @@ https://platexample.ir/#/discover/mauritania
 
 # mauritania_plate
 
-Mauritania's licence plates for [`plate_core`](https://pub.dev/packages/plate_core) — the Euro-style `1234 AB 00` plate with its `RIM` strip, in blue and in red, with a theme for each, the regional codes and an advisory validator.
+Mauritania's licence plates for the `plate_core` library. The Euro-style plate, `1234 AB 00` — four digits, two letters, a two-digit region — with the `RIM` strip at the right, in blue and in red. The older strip-less and stacked series, the navy plate and the temporary plate are not implemented, and neither is the 2017 Arabic-letter form.
+
+## Install
+
+```yaml
+dependencies:
+  plate_core: ^0.12.0
+  mauritania_plate: ^0.1.0
+```
+
+## Use
 
 ```dart
 import 'package:plate_core/plate_core.dart';
 import 'package:mauritania_plate/mauritania_plate.dart';
 
 PlateCanvas(
-  spec: MauritaniaPlates.blue,
+  spec: MauritaniaPlates.standard,
   theme: MauritaniaThemes.blue,
   validator: const MauritaniaPlateValidator(),
   autoValidate: true,
+  onChooseCharacter: noCharacterChooser,
 );
 ```
 
-## Also available
+## Contains
 
-- [`plate_core`](https://pub.dev/packages/plate-core) - Paint license plates.
-- [`plate_alphabet`](https://pub.dev/packages/plate-alphabet) - A library of alphabets for license plates.
+- `MauritaniaCountry` — country panel: `mauritania`.
+- `MauritaniaPlates` — 1 plate spec: `standard`.
+- `MauritaniaThemes` — 2 themes: `blue`, `red`.
+- `MauritaniaPlateValidator` — advisory validator; flags the frame, never blocks a keystroke.
+- `MauritaniaRegions` — code table.
+- 1 bundled asset (`Mauritania_map.svg`).
+
+## Part of plate
+
+Painted by [`plate_core`](https://pub.dev/packages/plate_core); alphabets shared through [`plate_alphabet`](https://pub.dev/packages/plate_alphabet); optional character picker in [`plate_keypad`](https://pub.dev/packages/plate_keypad).
+
