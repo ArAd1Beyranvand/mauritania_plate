@@ -60,11 +60,12 @@ abstract final class _Layout {
 
   /// First cell centre, pitch, cell count and whether it is a digit, left to
   /// right: `NNNN LL RR`.
-  static const List<(double, double, int, bool)> fields = <(double, double, int, bool)>[
-    (33.3, digitPitch, 4, true),
-    (248.9, letterPitch, 2, false),
-    (378.6, digitPitch, 2, true),
-  ];
+  static const List<(double, double, int, bool)> fields =
+      <(double, double, int, bool)>[
+        (33.3, digitPitch, 4, true),
+        (248.9, letterPitch, 2, false),
+        (378.6, digitPitch, 2, true),
+      ];
 }
 
 abstract final class MauritaniaPlates {
@@ -124,10 +125,18 @@ abstract final class MauritaniaPlates {
       ),
     ],
     slots: <PlateSlot>[
-      for (final (double centre, double pitch, int count, bool digit) in _Layout.fields)
+      for (final (double centre, double pitch, int count, bool digit)
+          in _Layout.fields)
         PlateSlot(
-          alphabet: digit ? MauritaniaAlphabets.digits : MauritaniaAlphabets.letters,
-          box: PlateBox(centre - pitch / 2, _Layout.serialTop, count * pitch, _Layout.serialHeight),
+          alphabet: digit
+              ? MauritaniaAlphabets.digits
+              : MauritaniaAlphabets.letters,
+          box: PlateBox(
+            centre - pitch / 2,
+            _Layout.serialTop,
+            count * pitch,
+            _Layout.serialHeight,
+          ),
           length: count,
           spacing: max(0, pitch - 0.6 * 0.72 * _Layout.serialHeight),
         ),
