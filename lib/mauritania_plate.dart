@@ -6,6 +6,9 @@
 /// not implemented, and neither is the 2017 Arabic-letter form.
 library;
 
+// TODO(py): [D5] one module `plates.countries.mauritania`; assets via importlib.resources.
+// TODO(ts): [D5] one subpath export `./countries/mauritania`; tree-shakable.
+// TODO(kt): [D5] package `countries.mauritania` in the countries module.
 export 'src/mauritania_alphabets.dart';
 export 'src/mauritania_colors.dart';
 export 'src/mauritania_country.dart';
