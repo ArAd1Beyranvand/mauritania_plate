@@ -11,13 +11,9 @@ import 'mauritania_colors.dart';
 abstract final class MauritaniaCountry {
   static const PlateCountry mauritania = PlateCountry(
     code: 'mr',
-    captionLines: <String>[],
     panelColor: Color(0x00000000),
     panelTextColor: MauritaniaColors.white,
     flagAspectRatio: 327 / 361,
-    // TODO(py): [H20][D6] flag asset by package + path; convert to PlateDrawing at export time.
-    // TODO(ts): [H20][D6] flag asset by package + path; convert to PlateDrawing at export time.
-    // TODO(kt): [H20][D6] flag asset by package + path; convert to PlateDrawing at export time.
     flag: SvgPlateAsset(
       'assets/Mauritania_map.svg',
       package: 'mauritania_plate',

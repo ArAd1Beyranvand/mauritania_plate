@@ -1,10 +1,10 @@
 import 'dart:io';
 
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mauritania_plate/mauritania_plate.dart';
 import 'package:plate_core/plate_core.dart';
+import 'package:plate_core/testing.dart';
 
 void main() {
   setUpAll(() async {
@@ -32,30 +32,15 @@ void main() {
   for (final (name, spec, theme, values) in cases) {
     testWidgets(name, (tester) async {
       final controller = PlateController.fromValues(spec, values.split(' '));
-      await tester.pumpWidget(
-        MaterialApp(
-          home: Scaffold(
-            body: Center(
-              child: SizedBox(
-                width: 520,
-                height: 110,
-                child: PlateView(
-                  controller: controller,
-                  theme: theme,
-                  country: MauritaniaCountry.mauritania,
-                ),
-              ),
-            ),
-          ),
-        ),
+      await pumpPlateGolden(
+        tester,
+        controller,
+        'goldens/$name.png',
+        theme: theme,
+        scoped: false,
+        country: MauritaniaCountry.mauritania,
+        stage: Size(520, 110),
       );
-      await tester.pumpAndSettle();
-      await expectLater(
-        find.byType(PlateView),
-        matchesGoldenFile('goldens/$name.png'),
-      );
-      await tester.pumpWidget(const SizedBox.shrink());
-      controller.dispose();
     });
   }
 }

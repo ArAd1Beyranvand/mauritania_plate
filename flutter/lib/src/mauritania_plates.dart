@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/widgets.dart';
 import 'package:plate_core/plate_core.dart';
 
@@ -33,14 +31,11 @@ import 'mauritania_regions.dart';
 /// has a base in DejaVu and none on the plate.
 ///
 abstract final class _Layout {
-  static const double width = 520;
-  static const double height = 110;
+  static const double width = 520, height = 110;
 
   static const double stripStart = 465.4;
 
-  static const double ringOuter = 38.5;
-  static const double ringWidth = 2.5;
-  static const double ringLeft = 468.45;
+  static const double ringOuter = 38.5, ringWidth = 2.5, ringLeft = 468.45;
   static const double ringTop = 15.75;
 
   /// White map ink x 475.3..498.2, y 22.3..47.1 in the artwork.
@@ -51,12 +46,10 @@ abstract final class _Layout {
   static const PlateBox rim = PlateBox(468, 72, 40, 15);
   static const double rimGlyph = 19;
 
-  static const double serialCentreY = 53.8;
-  static const double serialHeight = 82;
+  static const double serialCentreY = 53.8, serialHeight = 82;
   static const double serialTop = serialCentreY - serialHeight / 2;
 
-  static const double digitPitch = 45.5;
-  static const double letterPitch = 52;
+  static const double digitPitch = 45.5, letterPitch = 52;
 
   /// First cell centre, pitch, cell count and whether it is a digit, left to
   /// right: `NNNN LL RR`.
@@ -127,18 +120,13 @@ abstract final class MauritaniaPlates {
     slots: <PlateSlot>[
       for (final (double centre, double pitch, int count, bool digit)
           in _Layout.fields)
-        PlateSlot(
-          alphabet: digit
-              ? MauritaniaAlphabets.digits
-              : MauritaniaAlphabets.letters,
-          box: PlateBox(
-            centre - pitch / 2,
-            _Layout.serialTop,
-            count * pitch,
-            _Layout.serialHeight,
-          ),
-          length: count,
-          spacing: max(0, pitch - 0.6 * 0.72 * _Layout.serialHeight),
+        plateRun(
+          digit ? MauritaniaAlphabets.digits : MauritaniaAlphabets.letters,
+          count,
+          left: centre - pitch / 2,
+          top: _Layout.serialTop,
+          pitch: pitch,
+          height: _Layout.serialHeight,
         ),
     ],
     textGroups: const <PlateTextGroup>[
