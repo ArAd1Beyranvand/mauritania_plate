@@ -1,4 +1,4 @@
-import { GatedPlateValidator, type PlateEntry, type PlateValidation, invalid, valid, isLetters } from '../../core/validators/plate_validator';
+import { GatedPlateValidator, type PlateEntry, type PlateValidation, invalid, valid, isLetters } from 'plate_core/core/validators/plate_validator';
 
 const numberRe = /^[0-9]{4}$/;
 const regions = /^(0[0-9]|1[0-2])$/;
